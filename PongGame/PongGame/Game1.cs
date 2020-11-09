@@ -13,8 +13,15 @@ namespace PongGame
         public int screenSizeY;
         public float mousePositionY;
 
+        public string gameState; //"menu" = base state when launching, or after a game is finish
+                                 //"game" = when the ball is moving
+                                 //"score" = when a player score a point, showing the score and waiting for the player to click on the screen to continue
+
         Texture2D ballTexture;
         Vector2 ballPosition;
+        public float ballSpeed;
+        public float ballSpeedX;
+        public float ballSpeedY;
         public int ballSizeX;
         public int ballSizeY;
 
@@ -39,6 +46,9 @@ namespace PongGame
             ballSizeX = 14;
             ballSizeY = 14;
             ballPosition = new Vector2(screenSizeX / 2 - ballSizeX / 2, screenSizeY / 2 - ballSizeY / 2);
+            ballSpeed = 2.5f;
+            ballSpeedX = ballSpeed;
+            ballSpeedY = ballSpeed;
             ballTexture = new Texture2D(this.GraphicsDevice, ballSizeX, ballSizeY);
             Color[] ballColorData = new Color[ballSizeX * ballSizeY];
             for (int i = 0; i < ballSizeX * ballSizeY; i++)
@@ -46,7 +56,7 @@ namespace PongGame
             ballTexture.SetData<Color>(ballColorData);
 
             leftBarSizeX = 20;
-            leftBarSizeY = 150;
+            leftBarSizeY = 120;
             leftBarPosition = new Vector2(screenSizeX / 17 - leftBarSizeX / 2, screenSizeY / 2 - leftBarSizeY / 2);
             leftBarTexture = new Texture2D(this.GraphicsDevice, leftBarSizeX, leftBarSizeY);
             Color[] leftBarColorData = new Color[leftBarSizeX * leftBarSizeY];
@@ -71,9 +81,28 @@ namespace PongGame
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
 
-                /*ballPosition.X += 1;
-                if (ballPosition.X > this.GraphicsDevice.Viewport.Width)
-                    ballPosition.X = 0;*/
+                ballPosition.X += ballSpeedX;
+                ballPosition.Y += ballSpeedY;
+                if (ballPosition.X + ballSizeX >= screenSizeX)
+                {
+                    ballSpeed += 0.5f;
+                    ballSpeedX = -ballSpeed;
+                }
+                if (ballPosition.X <= 0)
+                {
+                    ballSpeed += 0.5f;
+                    ballSpeedX = ballSpeed;
+                }
+                if (ballPosition.X <= leftBarPosition.X + leftBarSizeX && ballPosition.Y >= leftBarPosition.Y && ballPosition.Y + ballSizeY <= leftBarPosition.Y + leftBarSizeY)
+                {
+                    ballSpeedX = ballSpeed;
+                }
+                if (ballPosition.Y + ballSizeY >= screenSizeY)
+                    ballSpeedY = -ballSpeed;
+                if (ballPosition.Y <= 0)
+                    ballSpeedY = ballSpeed;
+                if (ballSpeed >= 19.5f) ballSpeed = 19f;
+
                 mousePositionY = Mouse.GetState().Y;
                 leftBarPosition.Y = mousePositionY - ballSizeY / 2;
                 if (leftBarPosition.Y < 0) leftBarPosition.Y = 0;
