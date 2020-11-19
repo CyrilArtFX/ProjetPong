@@ -20,17 +20,52 @@
 /processorParam:TextureFormat=Compressed
 /build:PixeledFontLarge.spritefont
 
-#begin PixeledFontLarge.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:PixeledFontLarge.spritefont
-
 #begin PixeledFontSmall.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:PixeledFontSmall.spritefont
+
+#begin PongSounds/Bar.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/Bar.wav
+
+#begin PongSounds/Defeat.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/Defeat.wav
+
+#begin PongSounds/Defeat3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/Defeat3.wav
+
+#begin PongSounds/Menu.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/Menu.wav
+
+#begin PongSounds/UpAndDown.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/UpAndDown.wav
+
+#begin PongSounds/Win.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/Win.wav
+
+#begin PongSounds/Win3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PongSounds/Win3.wav
 

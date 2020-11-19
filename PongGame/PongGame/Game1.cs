@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using SharpDX.XInput;
 using System;
+using System.Collections.Generic;
 
 namespace PongGame
 {
@@ -48,6 +50,8 @@ namespace PongGame
         private bool isFrameCounterLaunched;
         private bool canClick;
 
+        List<SoundEffect> soundEffects;
+
 
 
         public Game1()
@@ -55,6 +59,7 @@ namespace PongGame
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            soundEffects = new List<SoundEffect>();
         }
 
         protected override void Initialize()
@@ -97,10 +102,8 @@ namespace PongGame
             rightBarSpeed = 3;
 
             //Initiate other datas
-            fontLarge = Content.Load<SpriteFont>("PixeledFontLarge");
-            fontSmall = Content.Load<SpriteFont>("PixeledFontSmall");
 
-            ReturnMenu();
+            ReturnMenu(false);
 
             frameCounter = 0;
             isFrameCounterLaunched = false;
@@ -112,6 +115,17 @@ namespace PongGame
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            fontLarge = Content.Load<SpriteFont>("PixeledFontLarge");
+            fontSmall = Content.Load<SpriteFont>("PixeledFontSmall");
+
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/Bar")); // [0]
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/UpAndDown"));// [1]
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/Win"));// [2]
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/Defeat"));// [3]
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/Menu"));// [4]
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/Win3"));// [5]
+            soundEffects.Add(Content.Load<SoundEffect>("PongSounds/Defeat3"));// [6]
         }
 
         protected override void Update(GameTime gameTime)
@@ -143,11 +157,15 @@ namespace PongGame
                 if (ballPosition.X + ballSizeX >= screenSizeX) //The ball is at the right edge
                 {
                     leftPlayerScore++;
+                    if (leftPlayerScore < 3) soundEffects[2].Play();
+                    else soundEffects[5].Play();
                     ShowScores();
                 }
                 if (ballPosition.X <= 0) //The ball is at the left edge
                 {
                     rightPlayerScore++;
+                    if (rightPlayerScore < 3) soundEffects[3].Play();
+                    else soundEffects[6].Play();
                     ShowScores();
                 }
 
@@ -157,22 +175,26 @@ namespace PongGame
                     ballSpeed += 0.5f;
                     effectiveBallSpeedX = ballSpeed;
                     effectiveBallSpeedY = effectiveBallSpeedY - (((leftBarPosition.Y + leftBarSizeY) - (ballPosition.Y + ballSizeY)) / 200) * ballSpeed;
+                    soundEffects[0].Play();
                 }
                 if (ballPosition.X + ballSizeX >= rightBarPosition.X && ballPosition.X <= rightBarPosition.X + rightBarSizeX && ballPosition.Y >= rightBarPosition.Y && ballPosition.Y + ballSizeY <= rightBarPosition.Y + rightBarSizeY)
                 {
                     ballSpeed += 0.5f;
                     effectiveBallSpeedX = -ballSpeed;
                     effectiveBallSpeedY = effectiveBallSpeedY - (((rightBarPosition.Y + rightBarSizeY) - (ballPosition.Y + ballSizeY)) / 200) * ballSpeed;
+                    soundEffects[0].Play();
                 }
 
                 //Make the ball bounce of the screen (up and down)
                 if (ballPosition.Y + ballSizeY >= screenSizeY)
                 {
                     effectiveBallSpeedY = -effectiveBallSpeedY;
+                    soundEffects[1].Play();
                 }
                 if (ballPosition.Y <= 0)
                 {
                     effectiveBallSpeedY = -effectiveBallSpeedY;
+                    soundEffects[1].Play();
                 }
 
                 //Limit the ball speed
@@ -226,7 +248,7 @@ namespace PongGame
                         }
                         else
                         {
-                            ReturnMenu();
+                            ReturnMenu(true);
                         }
                     }
                 }
@@ -285,6 +307,7 @@ namespace PongGame
             effectiveBallSpeedX = (((random.Next(0, 2)) * 2) - 1) * ballSpeed;
             effectiveBallSpeedY = (((random.Next(0, 2)) * 2) - 1) * ballSpeed;
             canClick = false;
+            soundEffects[4].Play();
             gameState = "game";
         }
 
@@ -297,8 +320,9 @@ namespace PongGame
             canClick = true;
         }
 
-        private void ReturnMenu()
+        private void ReturnMenu(bool playSound)
         {
+            if(playSound) soundEffects[4].Play();
             gameState = "menu";
             leftPlayerScore = 0;
             rightPlayerScore = 0;

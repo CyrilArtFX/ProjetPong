@@ -6,8 +6,22 @@
   <SourceFiles>
     <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PixeledFontLarge.spritefont</File>
     <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PixeledFontSmall.spritefont</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/Bar.wav</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/Defeat.wav</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/Defeat3.wav</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/Menu.wav</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/UpAndDown.wav</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/Win.wav</File>
+    <File>C:/Users/cyril/OneDrive/Bureau/ProjetPong/PongGame/PongGame/Content/PongSounds/Win3.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

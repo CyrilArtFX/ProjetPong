@@ -112,3 +112,10 @@ C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp
 C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\obj\Debug\netcoreapp3.1\PongGame.csproj.CoreCompileInputs.cache
 C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PixeledFontLarge.xnb
 C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PixeledFontSmall.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\Bar.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\Defeat.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\Defeat3.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\Menu.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\UpAndDown.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\Win.xnb
+C:\Users\cyril\OneDrive\Bureau\ProjetPong\PongGame\PongGame\bin\Debug\netcoreapp3.1\Content\PongSounds\Win3.xnb
